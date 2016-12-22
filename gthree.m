@@ -21,23 +21,18 @@ for c1=1:3
      end
   end
 end
-#all(:,end+1)=0;
 
-
-
-#f=marked(0,2,9,allt)
 fcount=0; #keeps track of fixed factors
-
-#k,v,t,i,y
-
-
 
 #cover is the covering array, with first test case as defined in the paper.
 cover(1,:)=[0 2 4 6 8];
 markall(cover(1,:),t);
  
 i=2;
+
 while (mcount<80)
+  
+  #Randomly chosing factors. Mentioned as "U" method in the paper.
   random=randperm(k,t-1);
   clear free;
   clear fixed;
@@ -68,13 +63,10 @@ while (mcount<80)
       endif
     endfor  
     
-    cover(i,tempfactor)=value; #using all the stuff done above
-    
+    cover(i,tempfactor)=value;
     fcount++; #one more factor fixed. 
-    
-    #update free and fixed vectors
-    fixed(1,end+1)=tempfactor; #no issues with this as fixed is reinitialized everytime for each test case.
-    free=free(free~=tempfactor);
+    fixed(1,end+1)=tempfactor; #update fixed vector
+    free=free(free~=tempfactor); #update free vector by removing the fixed factor
   endwhile #inner while ends  
 
 #mark all the possible 3 tuples, if not marked all ready!

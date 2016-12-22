@@ -8,6 +8,7 @@ function [fdensity,valuemax] = density (cover,free,fixed,testfactor,i)
   global t=3;
   sigmadensity=0;
   mdensity=0;
+  
   #Section1: taking fixed factors.
   #To chose t-1 fixed factors. obviously 2 possible tuples, corresponding to 2 values of the test factor
   tempcomb=nchoosek(fixed,t-1);
@@ -22,13 +23,12 @@ function [fdensity,valuemax] = density (cover,free,fixed,testfactor,i)
     #Section2: Taking one free(1-restricted) and others fixed.
     
     freeset=nchoosek(free,1); #1-restricted case, so this becomes specific here.
-    #A variable for controlling which free variable and a variable for which value of the factor 
     fixedset=nchoosek(fixed,t-2);
-    #A variable for controlling the rows of fixed set.
     
-    for j=1:size(freeset)(1,1)
-      for z=1:v
-        for rfixed=1:size(fixedset)(1,1)
+    
+    for j=1:size(freeset)(1,1) #A variable for controlling which free variable
+      for z=1:v     #A variable for which value of the factor
+        for rfixed=1:size(fixedset)(1,1) #A variable for controlling the rows of fixed set.
           sortresult=sort([cover(i,fixedset(rfixed,1)) table(z,freeset(j,1)) table(i,testfactor)]);
           tempdensity+=(!marked(sortresult(1,1),sortresult(1,2),sortresult(1,3)))/v;
         endfor
@@ -37,7 +37,7 @@ function [fdensity,valuemax] = density (cover,free,fixed,testfactor,i)
     sigmadensity+=tempdensity;
     if(tempdensity>=mdensity)
       mdensity=tempdensity;
-      valuemax=table(i,testfactor); #Look into this later...
+      valuemax=table(i,testfactor);
     endif
   endfor #ending for outer 'for'  
   fdensity=sigmadensity/v;

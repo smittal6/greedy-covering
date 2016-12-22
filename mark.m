@@ -1,5 +1,4 @@
-#mark function.
-#separating the mode from markall.
+#mark function: Marks and increases the mcount value.
 
 function mark(a,b,c)
 global allt;
