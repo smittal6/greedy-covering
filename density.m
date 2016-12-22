@@ -16,7 +16,7 @@ function [fdensity,valuemax] = density (cover,free,fixed,testfactor,i)
     tempdensity=0;    
     for j=1:size(tempcomb)(1,1) 
       sortresult=sort([cover(i,tempcomb(j,1)) cover(i,tempcomb(j,2)) table(i,testfactor)]);
-      tempdensity+=!marked(sortresult(1,1),sortresult(1,2),sortresult(1,3),0);
+      tempdensity+=!marked(sortresult(1,1),sortresult(1,2),sortresult(1,3));
     endfor
     
     #Section2: Taking one free(1-restricted) and others fixed.
@@ -30,7 +30,7 @@ function [fdensity,valuemax] = density (cover,free,fixed,testfactor,i)
       for z=1:v
         for rfixed=1:size(fixedset)(1,1)
           sortresult=sort([cover(i,fixedset(rfixed,1)) table(z,freeset(j,1)) table(i,testfactor)]);
-          tempdensity+=(!marked(sortresult(1,1),sortresult(1,2),sortresult(1,3),0))/v;
+          tempdensity+=(!marked(sortresult(1,1),sortresult(1,2),sortresult(1,3)))/v;
         endfor
       endfor
     endfor
