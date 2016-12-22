@@ -18,6 +18,7 @@ while(initial<=final)
 	if (allt(mid,1)==a)&&(allt(mid,2)==b)&&(allt(mid,3)==c)	
       if (allt(mid,4)==1)
 				f=1;
+        return;
       endif
 			f=0;
       return;  
