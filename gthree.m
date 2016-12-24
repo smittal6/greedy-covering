@@ -41,6 +41,9 @@ while (mcount<80)
     fixed(1,j)=random(1,j);
   endfor
   
+  cover(i,6)=sort(random)(1,1);
+  cover(i,7)=sort(random)(1,2);
+  
   fcount=t-1; #Updating the fcount, keeps tracked of fixed factors.(As of now random only)
   
   for y=1:k
