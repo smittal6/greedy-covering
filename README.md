@@ -18,5 +18,6 @@ octave
 
 ### To-do list ###
 
+* Resolving duplicate test case generation issue
 * Generalizing t-tuple generation
 * Trying different greedy versions of the algorithm
